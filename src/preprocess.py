@@ -7,7 +7,7 @@ THRESHOLD = dict({'movie': 4, 'book': 0, 'music': 0})
 
 
 def read_item_index_to_entity_id_file():
-    file = '../data/' + DATASET + '/item_index2entity_id.txt'
+    file = '/content/KGCN/data/' + DATASET + '/item_index2entity_id.txt'
     print('reading item index to entity id file: ' + file + ' ...')
     i = 0
     for line in open(file, encoding='utf-8').readlines():
@@ -19,7 +19,7 @@ def read_item_index_to_entity_id_file():
 
 
 def convert_rating():
-    file = '../data/' + DATASET + '/' + RATING_FILE_NAME[DATASET]
+    file = '/content/KGCN/data/' + DATASET + '/' + RATING_FILE_NAME[DATASET]
 
     print('reading rating file ...')
     item_set = set(item_index_old2new.values())
@@ -51,7 +51,7 @@ def convert_rating():
             user_neg_ratings[user_index_old].add(item_index)
 
     print('converting rating file ...')
-    writer = open('../data/' + DATASET + '/ratings_final.txt', 'w', encoding='utf-8')
+    writer = open('/content/KGCN/data/' + DATASET + '/ratings_final.txt', 'w', encoding='utf-8')
     user_cnt = 0
     user_index_old2new = dict()
     for user_index_old, pos_item_set in user_pos_ratings.items():
@@ -77,8 +77,8 @@ def convert_kg():
     entity_cnt = len(entity_id2index)
     relation_cnt = 0
 
-    writer = open('../data/' + DATASET + '/kg_final.txt', 'w', encoding='utf-8')
-    for line in open('../data/' + DATASET + '/kg.txt', encoding='utf-8'):
+    writer = open('/content/KGCN/data/' + DATASET + '/kg_final.txt', 'w', encoding='utf-8')
+    for line in open('/content/KGCN/data/' + DATASET + '/kg.txt', encoding='utf-8'):
         array = line.strip().split('\t')
         head_old = array[0]
         relation_old = array[1]
