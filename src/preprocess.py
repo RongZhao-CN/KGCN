@@ -1,9 +1,9 @@
 import argparse
 import numpy as np
 
-RATING_FILE_NAME = dict({'movie': 'ratings.csv', 'book': 'BX-Book-Ratings.csv', 'music': 'user_artists.dat'})
-SEP = dict({'movie': ',', 'book': ';', 'music': '\t'})
-THRESHOLD = dict({'movie': 4, 'book': 0, 'music': 0})
+RATING_FILE_NAME = dict({'movie': 'ratings.csv', 'book': 'BX-Book-Ratings.csv', 'music': 'user_artists.dat','biotools':'user_artists.dat'})
+SEP = dict({'movie': ',', 'book': ';', 'music': '\t','biotools':'\t'})
+THRESHOLD = dict({'movie': 4, 'book': 0, 'music': 0,'biotools':0})
 
 
 def read_item_index_to_entity_id_file():
@@ -23,8 +23,8 @@ def convert_rating():
 
     print('reading rating file ...')
     item_set = set(item_index_old2new.values())
-    user_pos_ratings = dict()
-    user_neg_ratings = dict()
+    user_pos_ratings = dict()#存储权重大于阈值的关系边
+    user_neg_ratings = dict()#存储权重小于阈值的关系边
 
     for line in open(file, encoding='utf-8').readlines()[1:]:
         array = line.strip().split(SEP[DATASET])
