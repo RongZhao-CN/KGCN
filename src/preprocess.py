@@ -1,7 +1,7 @@
 import argparse
 import numpy as np
 
-RATING_FILE_NAME = dict({'movie': 'ratings.csv', 'book': 'BX-Book-Ratings.csv', 'music': 'user_artists.dat','biotools':'user_artists.dat'})
+RATING_FILE_NAME = dict({'movie': 'ratings.csv', 'book': 'BX-Book-Ratings.csv', 'music': 'user_artists.dat','biotools':'user_items.dat'})
 SEP = dict({'movie': ',', 'book': ';', 'music': '\t','biotools':'\t'})
 THRESHOLD = dict({'movie': 4, 'book': 0, 'music': 0,'biotools':0})
 
